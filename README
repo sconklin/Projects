@@ -1,0 +1,8 @@
+A holding repo for various projects, mostly ones which have hardware.
+
+I'll try to maintain this list of what's under the top directory:
+
+* VGA-switch - a VGA disconnect switch box for testing monitor hotplug
+
+* custom-eagle-libs - Libraries for parts I've added to Eagle CAD for these projects
+
