@@ -1,0 +1,19 @@
+For a printable case, maximum board dimensions should be 2.5"x2.5"
+
+Pin order across VGA connector:
+(top to bottom across left-facing connector from top)
+6
+1
+11
+7
+2
+12
+8
+3
+13
+9
+4
+15
+10
+5
+15
