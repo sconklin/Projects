@@ -933,60 +933,60 @@ Source: Electronioc Interconnects European Edition 1998</description>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="-27.94" y="10.16"/>
-<instance part="K1" gate="1" x="12.7" y="7.62" rot="R180"/>
-<instance part="K1" gate="2" x="43.18" y="99.06" rot="R90"/>
-<instance part="K1" gate="3" x="43.18" y="104.14" rot="R90"/>
-<instance part="K2" gate="1" x="25.4" y="7.62" rot="R180"/>
-<instance part="K2" gate="2" x="43.18" y="88.9" rot="R90"/>
-<instance part="K2" gate="3" x="43.18" y="93.98" rot="R90"/>
-<instance part="K3" gate="1" x="38.1" y="7.62" rot="R180"/>
-<instance part="K3" gate="2" x="43.18" y="78.74" rot="R90"/>
-<instance part="K3" gate="3" x="43.18" y="83.82" rot="R90"/>
-<instance part="K4" gate="1" x="50.8" y="7.62" rot="R180"/>
-<instance part="K4" gate="2" x="43.18" y="68.58" rot="R90"/>
-<instance part="K4" gate="3" x="43.18" y="73.66" rot="R90"/>
-<instance part="K5" gate="1" x="63.5" y="7.62" rot="R180"/>
-<instance part="K5" gate="2" x="43.18" y="58.42" rot="R90"/>
-<instance part="K5" gate="3" x="43.18" y="63.5" rot="R90"/>
-<instance part="K6" gate="1" x="76.2" y="7.62" rot="R180"/>
-<instance part="K6" gate="2" x="43.18" y="48.26" rot="R90"/>
-<instance part="K6" gate="3" x="43.18" y="53.34" rot="R90"/>
-<instance part="K7" gate="1" x="88.9" y="7.62" rot="R180"/>
-<instance part="K7" gate="2" x="43.18" y="38.1" rot="R90"/>
-<instance part="K7" gate="3" x="43.18" y="43.18" rot="R90"/>
-<instance part="K8" gate="1" x="101.6" y="7.62" rot="R180"/>
-<instance part="K8" gate="2" x="43.18" y="27.94" rot="R90"/>
-<instance part="K8" gate="3" x="43.18" y="33.02" rot="R90"/>
-<instance part="X1" gate="-1" x="99.06" y="83.82"/>
-<instance part="X1" gate="-2" x="99.06" y="81.28"/>
-<instance part="X1" gate="-3" x="99.06" y="78.74"/>
-<instance part="X1" gate="-4" x="99.06" y="76.2"/>
-<instance part="X1" gate="-5" x="99.06" y="73.66"/>
-<instance part="X1" gate="-6" x="99.06" y="71.12"/>
-<instance part="X1" gate="-7" x="99.06" y="68.58"/>
-<instance part="X1" gate="-8" x="99.06" y="66.04"/>
-<instance part="X1" gate="-9" x="99.06" y="63.5"/>
-<instance part="X1" gate="-10" x="99.06" y="60.96"/>
-<instance part="X1" gate="-11" x="99.06" y="58.42"/>
-<instance part="X1" gate="-12" x="99.06" y="55.88"/>
-<instance part="X1" gate="-13" x="99.06" y="53.34"/>
-<instance part="X1" gate="-14" x="99.06" y="50.8"/>
-<instance part="X1" gate="-15" x="99.06" y="48.26"/>
-<instance part="X2" gate="-1" x="-12.7" y="50.8" rot="R180"/>
-<instance part="X2" gate="-2" x="-12.7" y="53.34" rot="R180"/>
-<instance part="X2" gate="-3" x="-12.7" y="55.88" rot="R180"/>
-<instance part="X2" gate="-4" x="-12.7" y="58.42" rot="R180"/>
-<instance part="X2" gate="-5" x="-12.7" y="60.96" rot="R180"/>
-<instance part="X2" gate="-6" x="-12.7" y="63.5" rot="R180"/>
-<instance part="X2" gate="-7" x="-12.7" y="66.04" rot="R180"/>
-<instance part="X2" gate="-8" x="-12.7" y="68.58" rot="R180"/>
-<instance part="X2" gate="-9" x="-12.7" y="71.12" rot="R180"/>
-<instance part="X2" gate="-10" x="-12.7" y="73.66" rot="R180"/>
-<instance part="X2" gate="-11" x="-12.7" y="76.2" rot="R180"/>
-<instance part="X2" gate="-12" x="-12.7" y="78.74" rot="R180"/>
-<instance part="X2" gate="-13" x="-12.7" y="81.28" rot="R180"/>
-<instance part="X2" gate="-14" x="-12.7" y="83.82" rot="R180"/>
-<instance part="X2" gate="-15" x="-12.7" y="86.36" rot="R180"/>
+<instance part="K1" gate="1" x="35.56" y="63.5" rot="R90"/>
+<instance part="K1" gate="2" x="35.56" y="78.74" rot="R90"/>
+<instance part="K1" gate="3" x="35.56" y="86.36" rot="R90"/>
+<instance part="K2" gate="1" x="58.42" y="63.5" rot="R90"/>
+<instance part="K2" gate="2" x="58.42" y="78.74" rot="R90"/>
+<instance part="K2" gate="3" x="58.42" y="86.36" rot="R90"/>
+<instance part="K3" gate="1" x="81.28" y="63.5" rot="R90"/>
+<instance part="K3" gate="2" x="81.28" y="78.74" rot="R90"/>
+<instance part="K3" gate="3" x="81.28" y="86.36" rot="R90"/>
+<instance part="K4" gate="1" x="101.6" y="63.5" rot="R90"/>
+<instance part="K4" gate="2" x="101.6" y="78.74" rot="R90"/>
+<instance part="K4" gate="3" x="101.6" y="86.36" rot="R90"/>
+<instance part="K5" gate="1" x="119.38" y="63.5" rot="R90"/>
+<instance part="K5" gate="2" x="119.38" y="78.74" rot="R90"/>
+<instance part="K5" gate="3" x="119.38" y="86.36" rot="R90"/>
+<instance part="K6" gate="1" x="137.16" y="63.5" rot="R90"/>
+<instance part="K6" gate="2" x="137.16" y="78.74" rot="R90"/>
+<instance part="K6" gate="3" x="137.16" y="86.36" rot="R90"/>
+<instance part="K7" gate="1" x="154.94" y="63.5" rot="R90"/>
+<instance part="K7" gate="2" x="154.94" y="78.74" rot="R90"/>
+<instance part="K7" gate="3" x="154.94" y="86.36" rot="R90"/>
+<instance part="K8" gate="1" x="15.24" y="63.5" rot="R90"/>
+<instance part="K8" gate="2" x="15.24" y="78.74" rot="R90"/>
+<instance part="K8" gate="3" x="15.24" y="86.36" rot="R90"/>
+<instance part="X1" gate="-1" x="-20.32" y="83.82"/>
+<instance part="X1" gate="-2" x="-20.32" y="81.28"/>
+<instance part="X1" gate="-3" x="-20.32" y="78.74"/>
+<instance part="X1" gate="-4" x="-20.32" y="76.2"/>
+<instance part="X1" gate="-5" x="-20.32" y="73.66"/>
+<instance part="X1" gate="-6" x="-20.32" y="71.12"/>
+<instance part="X1" gate="-7" x="-20.32" y="68.58"/>
+<instance part="X1" gate="-8" x="-20.32" y="66.04"/>
+<instance part="X1" gate="-9" x="-20.32" y="63.5"/>
+<instance part="X1" gate="-10" x="-20.32" y="60.96"/>
+<instance part="X1" gate="-11" x="-20.32" y="58.42"/>
+<instance part="X1" gate="-12" x="-20.32" y="55.88"/>
+<instance part="X1" gate="-13" x="-20.32" y="53.34"/>
+<instance part="X1" gate="-14" x="-20.32" y="50.8"/>
+<instance part="X1" gate="-15" x="-20.32" y="48.26"/>
+<instance part="X2" gate="-1" x="-30.48" y="48.26" rot="R180"/>
+<instance part="X2" gate="-2" x="-30.48" y="50.8" rot="R180"/>
+<instance part="X2" gate="-3" x="-30.48" y="53.34" rot="R180"/>
+<instance part="X2" gate="-4" x="-30.48" y="55.88" rot="R180"/>
+<instance part="X2" gate="-5" x="-30.48" y="58.42" rot="R180"/>
+<instance part="X2" gate="-6" x="-30.48" y="60.96" rot="R180"/>
+<instance part="X2" gate="-7" x="-30.48" y="63.5" rot="R180"/>
+<instance part="X2" gate="-8" x="-30.48" y="66.04" rot="R180"/>
+<instance part="X2" gate="-9" x="-30.48" y="68.58" rot="R180"/>
+<instance part="X2" gate="-10" x="-30.48" y="71.12" rot="R180"/>
+<instance part="X2" gate="-11" x="-30.48" y="73.66" rot="R180"/>
+<instance part="X2" gate="-12" x="-30.48" y="76.2" rot="R180"/>
+<instance part="X2" gate="-13" x="-30.48" y="78.74" rot="R180"/>
+<instance part="X2" gate="-14" x="-30.48" y="81.28" rot="R180"/>
+<instance part="X2" gate="-15" x="-30.48" y="83.82" rot="R180"/>
 </instances>
 <busses>
 </busses>
