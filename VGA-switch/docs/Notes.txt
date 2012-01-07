@@ -13,7 +13,11 @@ Pin order across VGA connector:
 13
 9
 4
-15
+14
 10
 5
 15
+
+relay contacts
+14-8 Top
+1-7 Bottom
