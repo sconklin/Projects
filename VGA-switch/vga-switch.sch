@@ -5734,28 +5734,28 @@ W = angled&lt;p&gt;
 </plain>
 <instances>
 <instance part="J1" gate="G$1" x="-53.34" y="7.62"/>
-<instance part="K1" gate="1" x="12.7" y="7.62" rot="R180"/>
+<instance part="K1" gate="1" x="12.7" y="7.62"/>
 <instance part="K1" gate="2" x="43.18" y="99.06" rot="R90"/>
 <instance part="K1" gate="3" x="43.18" y="104.14" rot="R90"/>
-<instance part="K2" gate="1" x="25.4" y="7.62" rot="R180"/>
+<instance part="K2" gate="1" x="25.4" y="7.62"/>
 <instance part="K2" gate="2" x="43.18" y="88.9" rot="R90"/>
 <instance part="K2" gate="3" x="43.18" y="93.98" rot="R90"/>
-<instance part="K3" gate="1" x="38.1" y="7.62" rot="R180"/>
+<instance part="K3" gate="1" x="38.1" y="7.62"/>
 <instance part="K3" gate="2" x="43.18" y="78.74" rot="R90"/>
 <instance part="K3" gate="3" x="43.18" y="83.82" rot="R90"/>
-<instance part="K4" gate="1" x="50.8" y="7.62" rot="R180"/>
+<instance part="K4" gate="1" x="50.8" y="7.62"/>
 <instance part="K4" gate="2" x="43.18" y="68.58" rot="R90"/>
 <instance part="K4" gate="3" x="43.18" y="73.66" rot="R90"/>
-<instance part="K5" gate="1" x="63.5" y="7.62" rot="R180"/>
+<instance part="K5" gate="1" x="63.5" y="7.62"/>
 <instance part="K5" gate="2" x="43.18" y="58.42" rot="R90"/>
 <instance part="K5" gate="3" x="43.18" y="63.5" rot="R90"/>
-<instance part="K6" gate="1" x="76.2" y="7.62" rot="R180"/>
+<instance part="K6" gate="1" x="76.2" y="7.62"/>
 <instance part="K6" gate="2" x="43.18" y="48.26" rot="R90"/>
 <instance part="K6" gate="3" x="43.18" y="53.34" rot="R90"/>
-<instance part="K7" gate="1" x="88.9" y="7.62" rot="R180"/>
+<instance part="K7" gate="1" x="88.9" y="7.62"/>
 <instance part="K7" gate="2" x="43.18" y="38.1" rot="R90"/>
 <instance part="K7" gate="3" x="43.18" y="43.18" rot="R90"/>
-<instance part="K8" gate="1" x="101.6" y="7.62" rot="R180"/>
+<instance part="K8" gate="1" x="101.6" y="7.62"/>
 <instance part="K8" gate="2" x="43.18" y="27.94" rot="R90"/>
 <instance part="K8" gate="3" x="43.18" y="33.02" rot="R90"/>
 <instance part="X2" gate="-1" x="86.36" y="99.06"/>
@@ -6118,21 +6118,21 @@ W = angled&lt;p&gt;
 <wire x1="-45.72" y1="0" x2="-45.72" y2="5.08" width="0.1524" layer="91"/>
 <junction x="-45.72" y="5.08"/>
 <junction x="-25.4" y="0"/>
-<pinref part="K1" gate="1" pin="1"/>
+<pinref part="K1" gate="1" pin="2"/>
 <wire x1="12.7" y1="2.54" x2="12.7" y2="0" width="0.1524" layer="91"/>
-<pinref part="K2" gate="1" pin="1"/>
+<pinref part="K2" gate="1" pin="2"/>
 <wire x1="25.4" y1="2.54" x2="25.4" y2="0" width="0.1524" layer="91"/>
-<pinref part="K3" gate="1" pin="1"/>
+<pinref part="K3" gate="1" pin="2"/>
 <wire x1="38.1" y1="2.54" x2="38.1" y2="0" width="0.1524" layer="91"/>
-<pinref part="K4" gate="1" pin="1"/>
+<pinref part="K4" gate="1" pin="2"/>
 <wire x1="50.8" y1="2.54" x2="50.8" y2="0" width="0.1524" layer="91"/>
-<pinref part="K5" gate="1" pin="1"/>
+<pinref part="K5" gate="1" pin="2"/>
 <wire x1="63.5" y1="2.54" x2="63.5" y2="0" width="0.1524" layer="91"/>
-<pinref part="K6" gate="1" pin="1"/>
+<pinref part="K6" gate="1" pin="2"/>
 <wire x1="76.2" y1="2.54" x2="76.2" y2="0" width="0.1524" layer="91"/>
-<pinref part="K7" gate="1" pin="1"/>
+<pinref part="K7" gate="1" pin="2"/>
 <wire x1="88.9" y1="2.54" x2="88.9" y2="0" width="0.1524" layer="91"/>
-<pinref part="K8" gate="1" pin="1"/>
+<pinref part="K8" gate="1" pin="2"/>
 <wire x1="101.6" y1="2.54" x2="101.6" y2="0" width="0.1524" layer="91"/>
 <junction x="12.7" y="0"/>
 <junction x="25.4" y="0"/>
@@ -6144,12 +6144,16 @@ W = angled&lt;p&gt;
 <junction x="101.6" y="0"/>
 </segment>
 </net>
-<net name="N$20" class="0">
+<net name="N$4" class="0">
 <segment>
 <pinref part="S1" gate="2" pin="S"/>
 <wire x1="-30.48" y1="7.62" x2="-15.24" y2="7.62" width="0.1524" layer="91"/>
 <wire x1="-15.24" y1="7.62" x2="-15.24" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="R1" gate="G$1" pin="1"/>
+<wire x1="106.68" y1="12.7" x2="109.22" y2="12.7" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="17.78" x2="106.68" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="-15.24" y1="17.78" x2="12.7" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="K1" gate="1" pin="1"/>
 <wire x1="12.7" y1="17.78" x2="25.4" y2="17.78" width="0.1524" layer="91"/>
 <wire x1="25.4" y1="17.78" x2="38.1" y2="17.78" width="0.1524" layer="91"/>
 <wire x1="38.1" y1="17.78" x2="50.8" y2="17.78" width="0.1524" layer="91"/>
@@ -6158,29 +6162,25 @@ W = angled&lt;p&gt;
 <wire x1="76.2" y1="17.78" x2="88.9" y2="17.78" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="17.78" x2="101.6" y2="17.78" width="0.1524" layer="91"/>
 <wire x1="101.6" y1="17.78" x2="106.68" y2="17.78" width="0.1524" layer="91"/>
-<wire x1="106.68" y1="17.78" x2="106.68" y2="12.7" width="0.1524" layer="91"/>
-<pinref part="R1" gate="G$1" pin="1"/>
-<wire x1="106.68" y1="12.7" x2="109.22" y2="12.7" width="0.1524" layer="91"/>
-<pinref part="K1" gate="1" pin="2"/>
 <wire x1="12.7" y1="12.7" x2="12.7" y2="17.78" width="0.1524" layer="91"/>
-<pinref part="K2" gate="1" pin="2"/>
+<pinref part="K2" gate="1" pin="1"/>
 <wire x1="25.4" y1="12.7" x2="25.4" y2="17.78" width="0.1524" layer="91"/>
-<pinref part="K3" gate="1" pin="2"/>
+<pinref part="K3" gate="1" pin="1"/>
 <wire x1="38.1" y1="12.7" x2="38.1" y2="17.78" width="0.1524" layer="91"/>
-<pinref part="K4" gate="1" pin="2"/>
+<pinref part="K4" gate="1" pin="1"/>
 <wire x1="50.8" y1="12.7" x2="50.8" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="K5" gate="1" pin="1"/>
+<wire x1="63.5" y1="12.7" x2="63.5" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="K6" gate="1" pin="1"/>
+<wire x1="76.2" y1="12.7" x2="76.2" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="K7" gate="1" pin="1"/>
+<wire x1="88.9" y1="12.7" x2="88.9" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="K8" gate="1" pin="1"/>
+<wire x1="101.6" y1="12.7" x2="101.6" y2="17.78" width="0.1524" layer="91"/>
 <junction x="12.7" y="17.78"/>
 <junction x="25.4" y="17.78"/>
 <junction x="38.1" y="17.78"/>
 <junction x="50.8" y="17.78"/>
-<pinref part="K5" gate="1" pin="2"/>
-<wire x1="63.5" y1="12.7" x2="63.5" y2="17.78" width="0.1524" layer="91"/>
-<pinref part="K6" gate="1" pin="2"/>
-<wire x1="76.2" y1="12.7" x2="76.2" y2="17.78" width="0.1524" layer="91"/>
-<pinref part="K7" gate="1" pin="2"/>
-<wire x1="88.9" y1="12.7" x2="88.9" y2="17.78" width="0.1524" layer="91"/>
-<pinref part="K8" gate="1" pin="2"/>
-<wire x1="101.6" y1="12.7" x2="101.6" y2="17.78" width="0.1524" layer="91"/>
 <junction x="63.5" y="17.78"/>
 <junction x="76.2" y="17.78"/>
 <junction x="88.9" y="17.78"/>
