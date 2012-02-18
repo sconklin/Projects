@@ -18,10 +18,10 @@ head_clearance_r = 3.5;
 //
 // case sizing
 //
-edge_clearance   = 2.0; // clearance between board edges and inside of case wall
+edge_clearance   = 0.3; // clearance between board edges and inside of case wall
 wall_thk         = 3.0; // case wall thickness
 base_thk         = 2.0; // case bottom thickness
-bottom_clearance = 3.0; // clearance between case bottom and board, to clear compontent leads
+bottom_clearance = 4.25; // clearance between case bottom and board, to clear compontent leads
 top_clearance    = 15.0; // clearance above board
 top_thk          = 2.0; // thickness of case top
 lip_w            = 2.0; // width of lip on bottom inside top
@@ -35,7 +35,7 @@ logo_thk         = -0.1; // thickness of the thin parts of the lid (0.8 is the s
 bd_x            = 64.44; // Board X size
 bd_y            = 63.5;   // Board Y size
 bd_thk          = 1.58;  // board thickness
-support_inset   = 7.0;   // how far in the corner supports come under the board
+support_inset   = 6.0;   // how far in the corner supports come under the board
 // Gaaah. Hole offsets are not the same from left and right edges of board
 // So - hole locations are referenced from the bottom left corner of the board
 // Adjust the hole location, because the board is centered
@@ -47,8 +47,8 @@ bd_yoff = -bd_y/2;
 
 hlox = bd_xoff+(.15*25.4); // .15 inches
 hloy = bd_yoff+(.15*25.4);
-hhix = bd_xoff+(2.35*25.4);
-hhiy = bd_yoff+(2.4*25.4);
+hhiy = bd_yoff+(2.35*25.4);
+hhix = bd_xoff+(2.4*25.4);
 
 //
 // Calculated values for convenience, don't edit
@@ -166,7 +166,7 @@ module switch_hole() {
 
 module vga_hole() {
 	// centered 33mm up from the edge of the board
-	translate([-bd_x/2,0,0])
+	translate([-bd_x/2,1.2,0])
 		rotate([0,0,-90])
 			generic_hole(w = 32, h = 13, d = 10);
 }
@@ -204,10 +204,10 @@ module topholes() {
 }
 
 module top() {
-	//rv = 180;
-	//tv = -(top_height+base_thk);
-	rv = 0;
-	tv = 0;
+	rv = 180;
+	tv = -(top_height+base_thk);
+	//rv = 0;
+	//tv = 0;
 	rotate([rv,0,0])
 		translate([0,0,tv])
 			difference() {
@@ -216,8 +216,8 @@ module top() {
 			}
 }
 
-//color("White")
-//	base();
+color("White")
+	base();
 
-color("OrangeRed")
-	top();
+//color("OrangeRed")
+//	top();
