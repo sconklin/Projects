@@ -21,7 +21,7 @@ head_clearance_r = 3.5;
 edge_clearance   = 0.3; // clearance between board edges and inside of case wall
 wall_thk         = 3.0; // case wall thickness
 base_thk         = 2.0; // case bottom thickness
-bottom_clearance = 4.25; // clearance between case bottom and board, to clear compontent leads
+bottom_clearance = 4.5; // clearance between case bottom and board, to clear compontent leads
 top_clearance    = 15.0; // clearance above board
 top_thk          = 2.0; // thickness of case top
 lip_w            = 2.0; // width of lip on bottom inside top
@@ -33,9 +33,10 @@ logo_thk         = -0.1; // thickness of the thin parts of the lid (0.8 is the s
 // board dimensions
 //
 bd_x            = 64.44; // Board X size
-bd_y            = 63.5;   // Board Y size
-bd_thk          = 1.58;  // board thickness
-support_inset   = 6.0;   // how far in the corner supports come under the board
+bd_y            = 63.5;  // Board Y size
+bd_thk          = 1.50;  // board thickness
+support_radius   = 4.0;  // How big the board supports are
+
 // Gaaah. Hole offsets are not the same from left and right edges of board
 // So - hole locations are referenced from the bottom left corner of the board
 // Adjust the hole location, because the board is centered
@@ -60,7 +61,7 @@ inside_x = outside_x-wall_thk;
 inside_y = outside_y-wall_thk;
 top_height = bottom_clearance+bd_thk+top_clearance+top_thk; // height of actual top piece
 
-support_clearance = support_inset+edge_clearance;
+//support_clearance = support_inset+edge_clearance;
 
 //
 // The base part, without the holes
@@ -76,16 +77,11 @@ module basesolid() {
 				cube([inside_x,inside_y,lip_h], center=true);
 				cube([inside_x-(2*lip_w),inside_y-(2*lip_w),lip_h], center=true);
 			}
-		// The corner supports for the board
-		difference() {
-			translate([0,0,(bottom_clearance/2)+base_thk])
-				cube([outside_x-wall_thk,outside_y-wall_thk,bottom_clearance], center=true);
-			union() {
-				// remove the center areas to leave square supports
-				translate([0,0,(bottom_clearance/2)+base_thk])
-					cube([bd_x-(2*support_clearance), outside_y+2, bottom_clearance+2], center=true);
-				translate([0,0,(bottom_clearance/2)+base_thk])
-					cube([inside_x+2, bd_y-(2*support_clearance), bottom_clearance+2], center=true);
+		// The supports for the board
+		for (hole = holes) {
+			translate(hole) {
+				translate([0,0,base_thk])
+					cylinder(r=support_radius, h=bottom_clearance);
 			}
 		}
 	}
@@ -130,16 +126,12 @@ module topsolid() {
 			translate([0,0,(top_remove_h/2)+base_thk])
 				cube([inside_x,inside_y,top_remove_h], center=true);
 		}
+
 		// The screw supports and board retainer
-		difference() {
-			translate([0,0,(top_clearance/2)+base_thk+bottom_clearance+bd_thk])
-				cube([outside_x-wall_thk,outside_y-wall_thk,top_clearance], center=true);
-			union() {
-				// remove the center areas to leave square supports
-				translate([0,0,top_height/2])
-					cube([bd_x-(2*support_clearance), outside_y+2, top_height], center=true);
-				translate([0,0,top_height/2])
-					cube([inside_x+2, bd_y-(2*support_clearance), top_height], center=true);
+		for (hole = holes) {
+			translate(hole) {
+				translate([0,0,base_thk+bottom_clearance+bd_thk])
+					cylinder(r=support_radius, h=top_clearance);
 			}
 		}
 	}
@@ -216,8 +208,8 @@ module top() {
 			}
 }
 
-color("White")
-	base();
+//color("White")
+//	base();
 
-//color("OrangeRed")
-//	top();
+color("OrangeRed")
+	top();
