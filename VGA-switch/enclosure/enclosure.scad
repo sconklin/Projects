@@ -21,7 +21,7 @@ head_clearance_r = 3.5;
 edge_clearance   = 0.3; // clearance between board edges and inside of case wall
 wall_thk         = 3.0; // case wall thickness
 base_thk         = 2.0; // case bottom thickness
-bottom_clearance = 4.5; // clearance between case bottom and board, to clear compontent leads
+bottom_clearance = 3.0; // clearance between case bottom and board, to clear compontent leads
 top_clearance    = 15.0; // clearance above board
 top_thk          = 2.0; // thickness of case top
 lip_w            = 2.0; // width of lip on bottom inside top
@@ -54,14 +54,12 @@ hhix = bd_xoff+(2.4*25.4);
 //
 // Calculated values for convenience, don't edit
 //
-holes = [[hlox,hloy],[hhix,hloy],[hlox,hhiy],[hhix,hhiy]];
+holes = [[hlox,hloy],[hhix,hloy],[hhix,hhiy],[hlox,hhiy]];
 outside_x = bd_x + 2*(edge_clearance+wall_thk);
 outside_y = bd_y + 2*(edge_clearance+wall_thk);
 inside_x = outside_x-wall_thk;
 inside_y = outside_y-wall_thk;
 top_height = bottom_clearance+bd_thk+top_clearance+top_thk; // height of actual top piece
-
-//support_clearance = support_inset+edge_clearance;
 
 //
 // The base part, without the holes
@@ -78,10 +76,20 @@ module basesolid() {
 				cube([inside_x-(2*lip_w),inside_y-(2*lip_w),lip_h], center=true);
 			}
 		// The supports for the board
-		for (hole = holes) {
-			translate(hole) {
-				translate([0,0,base_thk])
-					cylinder(r=support_radius, h=bottom_clearance);
+		intersection() {
+			// Limit the supports to the inside dimension of the case
+			translate([0,0,(base_thk+bottom_clearance)/2])
+				cube([inside_x,inside_y,base_thk+bottom_clearance], center=true);
+			// The block supports for the board
+			for (i = [0 : 3]) {
+				translate(holes[i]) {
+					translate([0,0,base_thk])
+					rotate([0,0,(i*90)+180])
+						minkowski() {
+							cylinder(r=support_radius, h=bottom_clearance/2);
+							cube([5, 5, bottom_clearance/2]);
+						}
+				}
 			}
 		}
 	}
@@ -92,9 +100,9 @@ module basesolid() {
 //
 module baseholes() {
 	union() {
-		for (hole = holes) {
-			translate(hole) {
-				cylinder(r=n6clearance_radius, h=10);
+		for (i = [0 : 3] ) {
+			translate(holes[i]) {
+				cylinder(r=n6clearance_radius, h=12);
 				rotate([0,180,0])
 					recessed_countersink(n6clearance_radius, head_clearance_r, base_thk);
 			}
@@ -126,12 +134,21 @@ module topsolid() {
 			translate([0,0,(top_remove_h/2)+base_thk])
 				cube([inside_x,inside_y,top_remove_h], center=true);
 		}
-
 		// The screw supports and board retainer
-		for (hole = holes) {
-			translate(hole) {
-				translate([0,0,base_thk+bottom_clearance+bd_thk])
-					cylinder(r=support_radius, h=top_clearance);
+		intersection() {
+			// Limit the supports to the inside dimension of the case
+			translate([0,0,top_height/2])
+				cube([inside_x,inside_y,top_height], center=true);
+			// The block supports for the board
+			for (i = [0 : 3]) {
+				translate(holes[i]) {
+					translate([0,0,base_thk+bottom_clearance+bd_thk])
+					rotate([0,0,(i*90)+180])
+						minkowski() {
+							cylinder(r=support_radius, h=top_clearance/2);
+							cube([5, 5, top_clearance/2]);
+						}
+				}
 			}
 		}
 	}
