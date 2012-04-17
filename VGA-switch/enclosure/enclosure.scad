@@ -34,7 +34,7 @@ logo_thk         = -0.1; // thickness of the thin parts of the lid (0.8 is the s
 //
 bd_x            = 64.44; // Board X size
 bd_y            = 63.5;  // Board Y size
-bd_thk          = 1.50;  // board thickness
+bd_thk          = 1.40;  // board thickness
 support_radius   = 4.0;  // How big the board supports are
 
 // Gaaah. Hole offsets are not the same from left and right edges of board
@@ -225,8 +225,8 @@ module top() {
 			}
 }
 
-//color("White")
-//	base();
+color("White")
+	base();
 
-color("OrangeRed")
-	top();
+//color("OrangeRed")
+//	top();
