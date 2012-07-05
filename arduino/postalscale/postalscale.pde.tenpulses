@@ -1,0 +1,91 @@
+#include <avr/interrupt.h>
+#include <avr/io.h>
+
+#define INIT_TIMER_COUNT 6
+#define RESET_TIMER2 TCNT2 = INIT_TIMER_COUNT
+
+int ledPin = 13;
+volatile int pulse_counter = 0;
+
+ISR(TIMER2_OVF_vect) {
+    pulse_counter += 1;
+    if (pulse_counter == 10) {
+       // we've sent all that we want to
+       TCCR2B = _BV(WGM22); // turn off the clock to the counter
+       TCNT2 = 0; // clear the count
+       pulse_counter = 0;
+    }
+}
+
+void setup() {
+    Serial.begin(9600);
+
+    // Use Timer 2
+    // Use Fast PWM mode (WGM22:0 = 7), Timer resets when it equals OCR2A
+
+    // We will catch the TOV2 set interrupt when it reaches count, and use
+    // that to count the number of clicks we have sent - OC2FA flag
+
+    // Use Inverted output COM2x1:0 = 3 - clear on match, set on bottom
+
+    // Since OCRA is used to set TOP count, only B can be a PWM output
+
+    // Only use B output
+
+    pinMode(3, OUTPUT);
+    pinMode(11, OUTPUT);
+
+    // TCCR2A
+    // 7 - COM2A1  - 0  // Compare Match output A mode
+    // 6 - COM2A0  - 0  // Compare Match output A mode
+    // 5 - COM2B1  - 1  // Compare Match output B mode
+    // 4 - COM2B0  - 0  // Compare Match output B mode
+    // 3 - reserv  - 0
+    // 2 - reserv  - 0
+    // 1 - WGM21   - 1  // Waveform Generation Mode 
+    // 0 - WGM20   - 1  // Waveform Generation Mode 
+    TCCR2A = _BV(COM2B1) | _BV(WGM21) | _BV(WGM20);
+
+    // TCCR2B
+    // 7 - FOC2A  - 0   // Force Output Compare A (not active in non-PWM mode)
+    // 6 - FOC2B  - 0   // Force Output Compare B (not active in non-PWM mode)
+    // 5 - reserv - 0
+    // 4 - reserv - 0
+    // 3 - WGM22  - 1  // Waveform Generation Mode 
+    // 2 - CS22   - 0  // Clock Select 
+    // 1 - CS21   - 1  // Clock Select
+    // 0 - CS20   - 0  // Clock Select
+    // Clock Select:
+    //  000 - No Source, timer/counter stopped
+    //  001 - CLK (no prescaling)
+    //  010 - CLK/8
+    //  011 - CLK/32
+    //  100 - CLK/64
+    //  101 - CLK/128
+    //  110 - CLK/256
+    //  111 - CLK/1024
+    // for now leave it turned off
+    TCCR2B = _BV(WGM22);
+
+    OCR2A = 98; // we want 100 steps in the cycle
+    OCR2B = 72; // we want the output to change 28 steps before the end
+
+    // Use internal clock – external clock not used in Arduino
+    ASSR |= (0<<AS2);
+    // Timer2 Overflow Interrupt Enable
+    TIMSK2 |= (1<<TOIE2) | (0<<OCIE2A);
+
+    sei();
+}
+
+void loop()                     
+{
+  //Serial.println(int_counter, second);
+  //Serial.print(int_counter, DEC);
+  delay(100);                  // wait for a second
+  // Turn on the timer clock
+  cli();
+  TCCR2B = _BV(WGM22) | _BV(CS21);
+  sei();
+  //Serial.println(" ping");
+}

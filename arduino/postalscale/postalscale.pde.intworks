@@ -1,0 +1,116 @@
+#include <avr/interrupt.h>
+#include <avr/io.h>
+
+int ledPin = 13;
+int interruptPin = 2;
+
+ISR(INT0_vect) {
+    // the external input has a falling edge - this is what starts everything
+    // turn off this interrupt
+    EIMSK &= ~_BV(INT0);
+    //digitalWrite(ledPin, HIGH);
+    TCNT2 = 0; // clear the timer count
+    TCCR2B = _BV(CS22); // Start timer 2, divide by 64
+}
+
+ISR(TIMER2_COMPA_vect) {
+    // we get here when the timer overflows
+    TCCR2B = 0; // turn off the clock to this counter
+    //digitalWrite(ledPin, LOW);
+    EIFR |= _BV(INTF0); // clear any pending external interrupts
+    EIMSK |= _BV(INT0); // re-enable external interrupts
+}
+
+ISR(TIMER2_COMPB_vect) {
+    // we should get here 40 uS after the timer is started by the external int
+    // TODO start the SPI read of the first of three bytes
+    digitalWrite(ledPin, LOW);
+    digitalWrite(ledPin, HIGH);
+}
+
+// TODO add SPI ISR
+
+void setup() {
+    Serial.begin(9600);
+
+    // We may want to write to the LED
+    pinMode(ledPin, OUTPUT);
+
+    // ***** Set up external interrupt *****
+    // read mode on external interrupt pin
+    pinMode(interruptPin, INPUT);
+    // falling edge triggers interrupt
+    EICRA &= ~_BV(ISC00);
+    EICRA |= _BV(ISC01);
+    // Enable INT0 interrupt
+    EIMSK |= _BV(INT0);
+
+    // ***** Set up timer 2 *****
+    // Use Timer 2
+    // Use CTC (clear timer on compare match) mode 
+    // (WGM22:0 = 2), Timer resets when it equals OCR2A
+    // OCRA is used to set TOP count
+
+    // 64 prescaler gives 250KHz or 4 uS per tick
+    // we need a delay before starting to clock in the scale data
+    // so we set compare B to a count of 8 (experimentally determined)
+
+    // TCCR2A
+    // 7 - COM2A1  - 0  // Compare Match output A mode
+    // 6 - COM2A0  - 0  // Compare Match output A mode
+    // 5 - COM2B1  - 0  // Compare Match output B mode
+    // 4 - COM2B0  - 0  // Compare Match output B mode
+    // 3 - reserv  - 0
+    // 2 - reserv  - 0
+    // 1 - WGM21   - 1  // Waveform Generation Mode 
+    // 0 - WGM20   - 0  // Waveform Generation Mode 
+    TCCR2A = _BV(WGM21);
+
+    // TCCR2B
+    // 7 - FOC2A  - 0   // Force Output Compare A (not active in non-PWM mode)
+    // 6 - FOC2B  - 0   // Force Output Compare B (not active in non-PWM mode)
+    // 5 - reserv - 0
+    // 4 - reserv - 0
+    // 3 - WGM22  - 0  // Waveform Generation Mode 
+    // 2 - CS22   - 1  // Clock Select 
+    // 1 - CS21   - 0  // Clock Select
+    // 0 - CS20   - 0  // Clock Select
+    // Clock Select:
+    //  000 - No Source, timer/counter stopped
+    //  001 - CLK (no prescaling)
+    //  010 - CLK/8
+    //  011 - CLK/32
+    //  100 - CLK/64
+    //  101 - CLK/128
+    //  110 - CLK/256
+    //  111 - CLK/1024
+
+    TCCR2B = 0; // for now leave it turned off
+    OCR2A = 227; // this gives 1100 Hz
+    OCR2B = 8; //
+    
+    ASSR &= ~_BV(AS2); // Use internal clock – external clock not used in Arduino
+    TIMSK2 |= _BV(OCIE2A); // Timer2A match Interrupt Enable
+    TIMSK2 |= _BV(OCIE2B); // Timer2B match Interrupt Enable
+
+    // ***** Set up SPI to read from the scale, baud rate = 20 KHz
+    // divisor = 399
+    // TODO
+
+    //digitalWrite(ledPin, HIGH);
+    sei(); // enable interrupts
+}
+
+void loop()                     
+{
+  int value;
+
+  delay(1000);                  // wait for a second
+
+  // TODO read the scale value up from the ISR and send it
+
+  //value = digitalRead(interruptPin);
+  Serial.print(TCNT2, DEC);
+  //Serial.print(value, DEC);
+  Serial.println(" ping");
+}

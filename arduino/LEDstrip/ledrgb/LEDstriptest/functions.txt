@@ -1,0 +1,64 @@
+Input Parameters:
+
+    STRIPLEN = number of LEDs in the strip
+
+Internal Parameters:
+
+    PatternType
+    PatternOffset = current start of pattern
+    redPatternBits
+    greenPatternBits
+    bluePatternBits
+
+Functions:
+
+lightOne(n,r,g,b) - light the nth LED in the specified color 
+
+setEveryNth(offset, N, r, g, b, skip) - set every nth LED starting at offset, until end
+                                        - if skip is set, leave other LEDs as is (no latch bit)
+
+definePattern(uint32 redPatternBits, uint32 greenPatternBits, uint32 bluePatternBits)
+
+setPattern(offset) - set the LEDs to the defined pattern, starting at offset
+
+shiftPattern(direction) - shift the pattern one LED (LEFT or RIGHT)
+
+=======================================
+General ideas
+
+Brightness steps of 1/64 (2X)
+
+To generate a fading effect, say you have LEDs 0-20
+
+000000000011111111112
+012345678901234567890
+          ^          
+
+Fade up from Center
+Send all to off
+
+send 10 fade up, skip all others
+clock fade 8 times (8)
+send 9,11 fade up, skip all others
+clock fade 8 times (16)
+send 8, 12 fade up, skip all others
+clock fade 8 times (24)
+send 7, 13 fade up, skip all others
+clock fade 8 times (32)
+send 6, 14 fade up, skip all others
+clock fade 8 times (40)
+send 5, 15 fade up, skip all others
+clock fade 8 times (48)
+send 4, 16 fade up, skip all others
+clock fade 8 times (56)
+send 3, 17 fade up, skip all others
+clock fade 8 times (64) - 10 is now at full!!
+send 10 fade down, 2, 18 fade up, skip all others
+clock fade 8 times (56)
+send 1, 19 fade up, 9, 11 fade down, skip all others
+etc
+
+
+
+
+
